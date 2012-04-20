@@ -290,7 +290,7 @@ var evercookie = (function (window) {
         self._ec.cacheData = undefined;
         document.cookie = "evercookie_cache=; expires=Mon, 20 Sep 2010 00:00:00 UTC; path=/";
 
-        new Request({
+        new Request.HTML({
           url: "evercookie_cache.php?name=" + name,
           onSuccess: function (data) {
             // put our cookie back
@@ -315,9 +315,9 @@ var evercookie = (function (window) {
         self._ec.etagData = undefined;
         document.cookie = "evercookie_etag=; expires=Mon, 20 Sep 2010 00:00:00 UTC; path=/";
 
-        new Request({
+        $.ajax({
           url: "evercookie_etag.php?name=" + name,
-          onSuccess: function (data) {
+          success: function (data) {
             // put our cookie back
             document.cookie = "evercookie_etag=" + origvalue + "; expires=Tue, 31 Dec 2030 00:00:00 UTC; path=/";
 
